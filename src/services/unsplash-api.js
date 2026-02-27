@@ -1,8 +1,8 @@
-// axios ve unsplash apisini kullanarak resimleri cekmek icin fonksiyonlarimizi yaziyoruz.
+﻿// axios ve unsplash apisini kullanarak resimleri cekmek icin fonksiyonlarimizi yaziyoruz.
 
 import axios from "axios";
 
-const API_KEY = "JePUBSEEwddh1pXyfTsg9hJtWJD4XhVsWsUUpzQdKo";
+const API_KEY = "qgyl0jaVhXyx_AAXm3PetMauy4QPGq93D09Vdtbh6Os";
 const BASE_URL = "https://api.unsplash.com";
 
 export const fetchImages = async (query, page = 1, perPage = 12) => {
@@ -23,3 +23,5 @@ export const fetchImages = async (query, page = 1, perPage = 12) => {
     total_pages: response.data.total_pages,
   };
 };
+
+

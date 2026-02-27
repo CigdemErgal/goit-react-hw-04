@@ -210,3 +210,30 @@ Not: Önce zorunlu ödev maddelerini bitireceğiz, sonra ekstralar (sticky heade
 - `SearchBar`, `ImageGallery`, `ImageCard` temel akışları yazıldı.
 - **Yarın ilk iş:** `ImageModal.jsx` tamamlanacak (`react-modal`, ESC + overlay close, `urls.regular`, `author/likes/description` fallback).
 - Sonrasında `Loader`, `LoadMoreBtn`, `ErrorMessage` içerikleri tamamlanacak ve final kontrol yapılacak.
+
+### Adım 9 - Gereksinim uyum düzeltmeleri (toplu)
+
+- **Ne yapıyoruz?** Görev metnindeki zorunlu maddelerle birebir uyum için klasör yapısını, render kurallarını ve kart DOM yapısını düzelttik.
+- **Neden yapıyoruz?** Değerlendirmede puan kıran kritik farkları kapatmak ve davranışı görev tanımıyla eşleştirmek için.
+- **Nerede yapıyoruz?** `src/components/ImageCard`, `src/components/ImageGallery/ImageGallery.jsx`, `src/components/ImageModal/ImageModal.jsx`, `src/App.jsx`.
+- **Kontrol noktası:**
+  - `ImageCard` artık `src/components/ImageCard` altında.
+  - `ImageCard` DOM yapısı `div > img`.
+  - Galeri yalnızca `images.length > 0` iken render.
+  - Hata durumunda galeri yerine `ErrorMessage` render.
+
+### Teknik Değişiklik Özeti
+
+- `ImageCard` klasörü `src/components/ImageCard` konumuna taşındı.
+- `ImageGallery` import yolu yeni klasöre güncellendi.
+- `App.jsx` içinde render koşulları güncellendi:
+  - `error` varsa sadece `ErrorMessage`.
+  - `error` yoksa galeri/loader/load-more akışı.
+  - galeri yalnızca resim dizisi doluyken render.
+- `ImageModal.jsx` içindeki satır içi yorumlar temizlenerek parse riski kaldırıldı.
+
+### Kalan Dış Bağımlılık Notu
+
+- Kod tarafındaki gereksinim farkları kapatıldı.
+- Console'daki `401 Unauthorized` hatası kod değil, Unsplash Access Key doğrulamasıyla ilgilidir.
+- Geçerli bir Access Key ile test edildiğinde "konsolda hata olmama" maddesi tamamlanır.
