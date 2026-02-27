@@ -3,6 +3,7 @@ import styles from "./ImageModal.module.css";
 
 Modal.setAppElement("#root");
 
+// BUYUK GORSEL VE EK BILGILERI MODAL ICINDE GOSTERIR.
 function ImageModal({ isOpen, image, onClose }) {
   return (
     <Modal

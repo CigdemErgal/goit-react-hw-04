@@ -1,9 +1,8 @@
-//apı cağrisi sırasında yüklenme durumunu göstermek için Loader.jsx bileşeni oluşturacağız. 
+﻿import styles from "./Loader.module.css";
 
-import styles from "./Loader.module.css";
-
+// VERI CEKILIRKEN YUKLENME DURUMUNU GOSTERIR.
 const Loader = () => {
-    return <p className={styles.loader}>Loading...</p>;
+  return <p className={styles.loader}>Loading...</p>;
 };
 
 export default Loader;

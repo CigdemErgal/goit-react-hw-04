@@ -10,6 +10,7 @@ import { fetchImages } from "./services/unsplash-api.js";
 import styles from "./App.module.css";
 
 function App() {
+  // UYGULAMANIN ANA STATE'LERI
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
@@ -18,6 +19,7 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
 
+  // YENI ARAMA BASLAT: SAYFAYI SIFIRLA, ESKI LISTE/HATA/MODALI TEMIZLE
   const handleSearch = (newQuery) => {
     setQuery(newQuery);
     setPage(1);
@@ -26,10 +28,12 @@ function App() {
     setSelectedImage(null);
   };
 
+  // SONRAKI SAYFAYI GETIR
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
+  // QUERY VEYA PAGE DEGISINCE API'DEN VERI CEK
   useEffect(() => {
     if (!query) return;
 
@@ -61,20 +65,25 @@ function App() {
       <Toaster position="top-center" />
       <SearchBar onSubmit={handleSearch} />
 
+      {/* HATA VARSA SADECE HATA MESAJI GOSTER */}
       {error ? (
         <ErrorMessage message={error} />
       ) : (
         <>
+          {/* GALERI SADECE VERI GELDIYSE RENDER EDILIR */}
           {images.length > 0 && (
             <ImageGallery images={images} onSelectImage={openModal} />
           )}
+
           {loading && <Loader />}
+
           {!loading && images.length > 0 && page < totalPages && (
             <LoadMoreBtn onClick={handleLoadMore} />
           )}
         </>
       )}
 
+      {/* MODAL SECILEN GORSEL VARSA ACILIR */}
       <ImageModal
         isOpen={!!selectedImage}
         image={selectedImage}
@@ -85,3 +94,4 @@ function App() {
 }
 
 export default App;
+
